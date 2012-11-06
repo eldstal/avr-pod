@@ -22,49 +22,49 @@ The voltage outputs of the potentiometer are connected to a CD4051 analog multip
 
 This makes a total of 20 connections between the panel and the motherboard:
 
-#		Cable		Ziptie	Function
-1		Black		White		USB GND
-2		Red			White		USB +5V
-3		Black 	Green		Pot 1 (col 1)
-4		Brown		Green		Pot 2 (col 1)
-5		White 	Green		Pot 3 (col 1)
-6		Yellow	Blue		Pot 4 (col 2)
-7		Blue		Blue		Pot 5 (col 2)
-8		Purple	Blue		Pot 6 (col 2)
-9		Gray		Blue		Pot 7 (slide)
-10	Orange	Red			Switch/LED bank anode
-11	Red			Red			Red LED bank anode
-12	Green		Red			Green LED bank anode
-13	Black		Red			LED 1 cathode (top/left)
-14	White		Red			LED 2 cathode (middle)
-15	Brown		Red			LED 3 cathode (bottom/right)
-16	Yellow	Yellow	Switch 1
-17	Blue		Yellow	Switch 2
-18	Purple	Yellow	Switch 3
+#   Cable   Ziptie  Function
+1   Black   White   USB GND
+2   Red     White   USB +5V
+3   Black   Green   Pot 1 (col 1)
+4   Brown   Green   Pot 2 (col 1)
+5   White   Green   Pot 3 (col 1)
+6   Yellow  Blue    Pot 4 (col 2)
+7   Blue    Blue    Pot 5 (col 2)
+8   Purple  Blue    Pot 6 (col 2)
+9   Gray    Blue    Pot 7 (slide)
+10  Orange  Red     Switch/LED bank anode
+11  Red     Red     Red LED bank anode
+12  Green   Red     Green LED bank anode
+13  Black   Red     LED 1 cathode (top/left)
+14  White   Red     LED 2 cathode (middle)
+15  Brown   Red     LED 3 cathode (bottom/right)
+16  Yellow  Yellow  Switch 1
+17  Blue    Yellow  Switch 2
+18  Purple  Yellow  Switch 3
 19  Orange  White   USB D+
 20  Green   White   USB D-
 
 
 This means the following connections are necessary:
-#   AVR				MUX   Function
-1 	------          Power rail GND
-2 	------          Power rail +5v
-3 	------    13    CD4051 input 0
-4 	------    14    CD4051 input 1
-5 	------    15    CD4051 input 2
-6 	------    12    CD4051 input 3
-7 	------    1     CD4051 input 4
-8 	------    5     CD4051 input 5
-9 	------    2     CD4051 input 6
-10 	14 PB0		      GPO-controlled transistor (Potential draw: 60mA + pins 12-14)
-11 	15 PB1		      GPO-controlled transistor (Potential draw: 60mA)
-12  16 PB2		      GPO-controlled transistor (Potential draw: 60mA)
-13	17 PB3		      GPO via 150 ohm resistor (20 mA @ 3V)
-14  18 PB4		      GPO via 150 ohm resistor
-15  19 PB5		      GPO via 150 ohm resistor
-16  11 PD5		      GPI + pull-down
-17  12 PD6		      GPI + pull-down
-18  13 PD7		      GPI + pull-down
+#   AVR       MUX   Function
+1   ------          Power rail GND
+2   ------          Power rail +5v
+3   ------    13    CD4051 input 0
+4   ------    14    CD4051 input 1
+5   ------    15    CD4051 input 2
+6   ------    12    CD4051 input 3
+7   ------    1     CD4051 input 4
+8   ------    5     CD4051 input 5
+9   ------    2     CD4051 input 6
+10  14 PB0          GPO-controlled transistor (Potential draw: 60mA + pins 12-14)
+11  15 PB1          GPO-controlled transistor (Potential draw: 60mA)
+12  16 PB2          GPO-controlled transistor (Potential draw: 60mA)
+13  17 PB3          GPO via 150 ohm resistor (20 mA @ 3V)
+14  18 PB4          GPO via 150 ohm resistor
+15  19 PB5          GPO via 150 ohm resistor
+16  11 PD5          GPI + pull-down
+17  12 PD6          GPI + pull-down
+18  13 PD7          GPI + pull-down
 --  27 ADC4   3     CD4051 output
 --  23 PC0    11    GPO CD4051 Sel 0
 --  24 PC1    10    GPO CD4051 Sel 1
