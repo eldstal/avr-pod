@@ -1,0 +1,46 @@
+USAGE_PAGE (Generic Desktop)
+USAGE (Joystick)
+COLLECTION (Application)
+    COLLECTION (Physical)
+
+        USAGE_PAGE (Button)
+        USAGE_MINIMUM (Button 1)
+        USAGE_MAXIMUM (Button 3)
+        LOGICAL_MINIMUM (0)
+        LOGICAL_MAXIMUM (1)
+        REPORT_COUNT (3)
+        REPORT_SIZE (1)
+        INPUT (Data, Variable, Absolute)
+
+				REPORT_COUNT(1)					; Byte padding
+				REPORT_SIZE(5)
+				INPUT(Constant, Variable, Absolute)
+
+        USAGE_PAGE (Generic Desktop)
+        USAGE (Dial)
+        LOGICAL_MINIMUM (0)
+        LOGICAL_MAXIMUM (255)
+        REPORT_SIZE (8)
+        REPORT_COUNT (6)
+        INPUT (Data, Variable, Absolute)
+
+        USAGE (Slider)
+        LOGICAL_MINIMUM (0)
+        LOGICAL_MAXIMUM (255)
+        REPORT_SIZE (8)
+        REPORT_COUNT (1)
+        INPUT (Data, Variable, Absolute)
+
+        USAGE_PAGE (LEDs)
+				USAGE (Generic Indicator)
+        LOGICAL_MINIMUM (0)
+        LOGICAL_MAXIMUM (1)
+        REPORT_SIZE (1)
+        REPORT_COUNT (9)
+        INPUT (Data, Variable, Absolute)
+
+				REPORT_COUNT(1)				; Byte padding
+				REPORT_SIZE(7)
+				INPUT(Const, Variable, Absolute)
+    END COLLECTION
+END COLLECTION

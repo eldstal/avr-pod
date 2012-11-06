@@ -1,0 +1,13 @@
+If you have an AVR device with the full 8 ADC channels pinned out,
+you can remove the analog mux from the circuit and reconfigure podcontrols.c
+to use the build-in ADMUX, set all PORTC pins as analog inputs, etc.
+
+See wiring.txt for a breakdown of the circuitry
+
+The following make rules are used:
+
+hex     -  Build the program
+fuse    -  Set the AVR's fuses for a 16MHz external crystal
+flash   -  Write the program to AVR flash
+program - hex, fuse, flash
+
