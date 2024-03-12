@@ -112,7 +112,7 @@ void showInputOnLEDs() {
 
   LEDBuffer.switches = 0x00;
   for (int c = 0; c<3; ++c) {
-    int switchstate = (reportBuffer.switches & (0x1 << c)) == 0;
+    int switchstate = (reportBuffer.switches & (0x1 << c)) != 0;
     LEDBuffer.switches |= switchstate << c;
   }
 }
