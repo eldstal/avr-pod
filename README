@@ -11,3 +11,11 @@ fuse    -  Set the AVR's fuses for a 16MHz external crystal
 flash   -  Write the program to AVR flash
 program - hex, fuse, flash
 
+
+You can use midimonster to make this work as a MIDI controller or whatever else you want, if you don't want to figure out how to implement USB-MIDI. A midimonster configuration file is included.
+
+```
+midimonster midimonster.conf
+aseqdump -l        # Find port number
+asecdump -p 20:0   # Use the port number here
+```
