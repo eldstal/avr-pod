@@ -4,7 +4,7 @@
 // This one works with windows
 // Semantically, it would be preferrable to replace the axes (X, Y, Z, etc)
 // with USAGE (Dial) (0x09, 0x37) but windows chokes on this.
-PROGMEM char usbHidReportDescriptor[50] = {
+PROGMEM const char usbHidReportDescriptor[50] = {
     0x05, 0x01,                    // USAGE_PAGE (Generic Desktop)
     0x09, 0x04,                    // USAGE (Joystick)
     0xa1, 0x01,                    // COLLECTION (Application)
