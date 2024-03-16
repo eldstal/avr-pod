@@ -7,10 +7,25 @@
 report_t reportBuffer;
 led_t    LEDBuffer;
 
+
+#define ADC_JITTER_DEPTH 48
+#define ADC_JITTER_RELAXEDNESS 1
+
+// ADC jitter reduction
+typedef struct {
+  unsigned char history[ADC_JITTER_DEPTH];
+  unsigned char history_head;
+  unsigned char current_val;
+} ADCState;
+
+ADCState ADC_HISTORY[7] = { 0 };
+
 // Private functions
 void prepareADC(int stage);
 unsigned int isADCReady();
 unsigned char getADC();
+
+unsigned char getADCFiltered(unsigned char chan);
 
 
 void initPodControls() {
@@ -81,7 +96,8 @@ inline void updateSensorData() {
     case 5:
     case 6:
       if (isADCReady()) {
-        reportBuffer.ax[stage] = getADC();
+        //reportBuffer.ax[stage] = getADC();
+        reportBuffer.ax[stage] = getADCFiltered(stage);
 
         // Next time, move on to another stage!
         ++stage;
@@ -184,4 +200,27 @@ inline unsigned char getADC() {
   // 10 bits of data is left-adjusted over two 8-bit registers
   // We discard the two least significant bits.
   return ADCH;
+}
+
+inline unsigned char getADCFiltered(unsigned char chan) {
+
+  ADCState* state = &(ADC_HISTORY[chan]);
+
+  state->history_head = (state->history_head + 1) % ADC_JITTER_DEPTH;
+  state->history[state->history_head] = getADC();
+
+  unsigned int n_bounces = 0;
+  for (unsigned int i=0; i<ADC_JITTER_DEPTH-1; i++) {
+    n_bounces += state->history[i] == state->current_val;
+  }
+
+  // If the last reported value is in the buffer too many times
+  // we don't consider ourselves to be moving.
+  if (n_bounces < ADC_JITTER_RELAXEDNESS) {
+    state->current_val = state->history[ADC_JITTER_DEPTH-1];
+  }
+
+  return state->current_val;
+
+
 }

@@ -74,7 +74,7 @@ int main(void) {
 				usbSetInterrupt((void *)&reportBuffer, sizeof(reportBuffer));
 			} else {
 				updateSensorData();
-        updateLEDState();
+        //updateLEDState();
       }
 	}
 }
